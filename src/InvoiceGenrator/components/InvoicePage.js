@@ -53,8 +53,8 @@ Font.register({
 // }
 const InvoicePage = ({ data, pdfMode, id }) => {
   // const options1 = JSON.parse(options);
+  let parseData;
   if (id) {
-    let parseData;
     id = String(id);
     id = id?.slice(3);
     console.log("sssssssssssss", id);
@@ -75,15 +75,38 @@ const InvoicePage = ({ data, pdfMode, id }) => {
       parseData = JSON.parse(decodeStr);
       console.log("decodeStr", JSON.parse(decodeStr));
       console.log("parseData", parseData);
+      // setInvoice({ ...invoice });
     } catch (e) {
       parseData = [];
       console.log("something went wrong");
     }
   }
-
+  const a = {
+    tests: 123,
+    id: {
+      date: "04.05.2022",
+      productName: "Whimpikid",
+      companyName: "hllo",
+      phone: 8008565252,
+      fullname: "ffff",
+      email: "dsfdf@gmail.com",
+      comments: "kjnljjlk",
+      isRequestCompleted: true,
+      Actions: "627288f57fe37902771cc08f",
+    },
+    ItemDescription: "my custom title",
+  };
   const [invoice, setInvoice] = useState(
-    data ? { ...data } : { ...initialInvoice }
+    data
+      ? { ...data }
+      : {
+          ...initialInvoice,
+          companyName: parseData?.id?.companyName,
+          name: parseData?.id?.fullname,
+          productLineDescription: parseData?.ItemDescription,
+        }
   );
+
   const [subTotal, setSubTotal] = useState();
   const [saleTax, setSaleTax] = useState();
 
