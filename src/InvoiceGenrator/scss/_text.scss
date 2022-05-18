@@ -1,0 +1,44 @@
+.InvoiceGenrator {
+  .right {
+    text-align: right;
+  }
+
+  .center {
+    text-align: center;
+  }
+
+  .bold {
+    font-weight: 600;
+  }
+
+  .fs-20 {
+    font-size: 20px;
+    // background-color: red;
+  }
+
+  .fs-30 {
+    font-size: 30px;
+    // background-color: green;
+  }
+
+  .fs-45 {
+    font-size: 45px;
+    // background-color: rgb(81, 0, 255);
+  }
+
+  .upper {
+    text-transform: uppercase;
+  }
+  $fontSize: 15.5px;
+  input,
+  select,
+  textarea,
+  button,
+  .ant-picker-input {
+    ::placeholder {
+      font-size: $fontSize;
+    }
+    font-size: $fontSize;
+    // background-color: cyan;
+  }
+}
