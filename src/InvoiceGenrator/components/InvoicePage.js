@@ -81,29 +81,58 @@ const InvoicePage = ({ data, pdfMode, id }) => {
       console.log("something went wrong");
     }
   }
-  const a = {
-    tests: 123,
-    id: {
-      date: "04.05.2022",
-      productName: "Whimpikid",
-      companyName: "hllo",
-      phone: 8008565252,
-      fullname: "ffff",
-      email: "dsfdf@gmail.com",
-      comments: "kjnljjlk",
-      isRequestCompleted: true,
-      Actions: "627288f57fe37902771cc08f",
-    },
-    ItemDescription: "my custom title",
-  };
+  // const a = {
+  //   tests: 123,
+  //   id: {
+  //     location: {
+  //       address: {
+  //         street: "Hyderabad, Telangana, India",
+  //         city: "Hyderabad",
+  //         state: "Telangana",
+  //         country: "India",
+  //         zipCode: "",
+  //       },
+  //       geocode: {
+  //         type: "Point",
+  //         coordinates: [17.385044, 78.486671],
+  //       },
+  //     },
+  //     _id: "6270f9563bfe60276070b9c6",
+  //     OTP: "225522",
+  //     isOTPValidated: true,
+  //     isRequestCompleted: true,
+  //     phone: 9502404512,
+  //     countryCode: "+91",
+  //     createdAt: "2022-05-03T09:43:50.703Z",
+  //     updatedAt: "2022-05-18T05:38:29.088Z",
+  //     comments: "dfgdfgdfgdf",
+  //     companyName: "de2prod.com",
+  //     email: "asss@gmaail.com",
+  //     fullname: "assss",
+  //     productName: "dgf",
+  //     adminComments: "dgdfgdvgd",
+  //     alternativePhone: 9502404512,
+  //   },
+  //   ItemDescription: "my custom title",
+  //   title: "Generate Your Invoice custom title",
+  //   INVOICE: "props INVOICE",
+  // };
+  const { title, INVOICE, ItemDescription, id: UserData } = parseData ?? {};
+  const { location, companyName, fullname } = UserData ?? {};
+  const { address } = location ?? {};
+  const { street, zipCode } = address ?? {};
+
   const [invoice, setInvoice] = useState(
     data
       ? { ...data }
       : {
           ...initialInvoice,
-          companyName: parseData?.id?.companyName,
-          name: parseData?.id?.fullname,
-          productLineDescription: parseData?.ItemDescription,
+          clientCompanyName: companyName,
+          clientName: fullname,
+          clientAddress: street,
+          clientAddress2: zipCode,
+          title: INVOICE,
+          productLineDescription: ItemDescription,
         }
   );
 
@@ -217,7 +246,7 @@ const InvoicePage = ({ data, pdfMode, id }) => {
       <Page className="invoice-wrapper" pdfMode={pdfMode}>
         {!pdfMode && (
           <>
-            <Download data={invoice} />
+            <Download data={invoice} title={title} />
           </>
         )}
 
@@ -282,6 +311,12 @@ const InvoicePage = ({ data, pdfMode, id }) => {
                   className="bold dark mb-5"
                   value={invoice.billTo}
                   onChange={(value) => handleChange("billTo", value)}
+                  pdfMode={pdfMode}
+                />
+                <EditableInput
+                  placeholder="Client Company Name's"
+                  value={invoice.clientCompanyName}
+                  onChange={(value) => handleChange("clientCompanyName", value)}
                   pdfMode={pdfMode}
                 />
                 <EditableInput

@@ -14,7 +14,7 @@ import "../../Header/Header.scss";
 import Back from "../../Header/Image/right-arrow.svg";
 import { useHistory } from "react-router-dom";
 const { Title } = Typography;
-const Download = ({ data }) => {
+const Download = ({ data, title }) => {
   let history = useHistory();
   const [show, setShow] = useState(false);
 
@@ -75,7 +75,7 @@ const Download = ({ data }) => {
       </div>
       <br />
 
-      <h1 className="title center fs-30">Generate Your Invoice </h1>
+      <h1 className="title center fs-30"> {title} </h1>
 
       <br />
     </div>

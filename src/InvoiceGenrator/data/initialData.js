@@ -16,6 +16,7 @@ export const initialInvoice = {
   companyAddress2: "",
   companyCountry: "India",
   billTo: "Bill To:",
+  clientCompanyName: "",
   clientName: "",
   clientAddress: "",
   clientAddress2: "",
