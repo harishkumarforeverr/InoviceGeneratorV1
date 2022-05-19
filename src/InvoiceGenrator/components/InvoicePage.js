@@ -587,6 +587,7 @@ const InvoicePage = ({ data, pdfMode, id }) => {
                 value={invoice.notes}
                 onChange={(value) => handleChange("notes", value)}
                 pdfMode={pdfMode}
+                placeholder={"please enter your notes here"}
               />
             </View>
             <View className="mt-20" pdfMode={pdfMode}>
@@ -602,6 +603,7 @@ const InvoicePage = ({ data, pdfMode, id }) => {
                 value={invoice.term}
                 onChange={(value) => handleChange("term", value)}
                 pdfMode={pdfMode}
+                placeholder={"please enter your terms and conditions here"}
               />
             </View>
           </div>

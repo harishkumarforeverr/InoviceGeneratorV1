@@ -1,22 +1,30 @@
-.invoice-header-wrapper { 
+.invoice-header-wrapper {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  // .invoice-header-wrapper {
+  position: fixed;
+  right: 10vw;
+  top: 0;
+  padding-top: 1%;
+  background-color: #fffafa;
+  // }
   .ant-typography h4,
-  h4.ant-typography { 
-    opacity: 0; 
+  h4.ant-typography {
+    // opacity: 0;
     color: #f06e38;
-    .ant-image-img { 
-      opacity: 0;
+    .ant-image-img {
+      // opacity: 0;
       margin-right: 1rem;
-      width: 2rem; 
+      width: 2rem;
     }
   }
-  & > div { 
+  & > div {
     width: 55%;
     width: 45%;
     display: flex;
     justify-content: space-evenly;
+    gap: 3rem;
     .ant-btn {
       width: 12rem;
       border: none;
